@@ -56,4 +56,17 @@ router.put('/updateBook/:id', async (req,res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+router.delete('/deleteBook/:id' , async (req,res) => {
+  const id = req.params.id;
+  try {
+    await bookModel.findByIdAndDelete(id).then(()=> {
+      res.status(200).json({message: "Book deleted."})
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 module.exports = router;
