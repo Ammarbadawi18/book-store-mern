@@ -24,4 +24,16 @@ router.get('/getBooks', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+router.get('/getBooks/:id', async (req,res)=> {
+    let book;
+    let id = req.params.id;
+    try {
+      book = await bookModel.findById(id);
+      res.status(200).json({book});
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
 module.exports = router;
