@@ -13,4 +13,15 @@ router.post('/add', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+router.get('/getBooks', async (req, res) => {
+  let books;
+  try {
+    books = await bookModel.find();
+    res.status(200).json({ books });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 module.exports = router;
