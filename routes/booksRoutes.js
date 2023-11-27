@@ -25,7 +25,7 @@ router.get('/getBooks', async (req, res) => {
   }
 });
 
-router.get('/getBooks/:id', async (req,res)=> {
+router.get('/getBook/:id', async (req,res)=> {
     let book;
     let id = req.params.id;
     try {
@@ -36,4 +36,24 @@ router.get('/getBooks/:id', async (req,res)=> {
       res.status(500).json({ error: 'Internal Server Error' });
     }
 })
+
+router.put('/updateBook/:id', async (req,res) => {
+    let book;
+    let id = req.params.id;
+    let {bookName, description, author , image , price}= req.body;
+    try {
+      book = await bookModel.findByIdAndUpdate(id, {
+        bookName,
+        description,
+        author,
+        image, 
+        price
+      });
+      await book.save()
+      .then(()=>{ res.status(200).json({message: "Updated the book."})})
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 module.exports = router;
