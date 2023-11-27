@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Home.css";
+import {Link} from "react-router-dom";
 
 const Home = () => {
   return (
@@ -7,7 +8,7 @@ const Home = () => {
         <div className="row">
             <div className="col-lg-6 d-flex justify-content-center align-items-start flex-column">
                 <h2 style={{ fontSize: "70px", marginBottom: "20px" }}>The Book Store</h2>
-                <button className='viewBook btn btn-success'>View Books</button>
+                <Link to="/books" className='viewBook btn btn-success'>View Books</Link>
             </div>
             <div className="col-lg-6 d-flex justify-content-center align-items-end flex-column">
                 <img
