@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-require("./connection/conn");
-app.get("/", (req, res)=>{
-    res.send("hello");
-});
+const bookRoute = require('./routes/booksRoutes');
+require('./connection/conn');
+app.use(express.json());
+app.use('/bookstore', bookRoute);
 
-app.listen(3000,() => {
-    console.log("server started.")
+app.listen(3000, () => {
+  console.log('server started.');
 });
