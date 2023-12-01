@@ -19,7 +19,7 @@ const Books = () => {
       <div className="d-flex justify-content-center align-items-center py-3">
         <h4 className="text-white">Books Section</h4>
       </div>
-      {Data ? <BookSection data={Data} /> : <h1>fokn</h1>};
+      {Data ? <BookSection data={Data} /> : <h1>Couldn't get books!</h1>};
     </div>
   );
 };
